@@ -3,17 +3,37 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
+                echo 'Building with Maven...'
             }
         }
-        stage('Test') {
+        stage('Unit and Integration Tests') {
             steps {
-                echo 'Testing...'
+                echo 'Running JUnit tests...'
             }
         }
-        stage('Deploy') {
+        stage('Code Analysis') {
             steps {
-                echo 'Deploying...'
+                echo 'Running SonarQube analysis...'
+            }
+        }
+        stage('Security Scan') {
+            steps {
+                echo 'Running OWASP Dependency-Check...'
+            }
+        }
+        stage('Deploy to Staging') {
+            steps {
+                echo 'Deploying to staging with Ansible...'
+            }
+        }
+        stage('Integration Tests on Staging') {
+            steps {
+                echo 'Running Newman integration tests on staging...'
+            }
+        }
+        stage('Deploy to Production') {
+            steps {
+                echo 'Deploying to production with Ansible...'
             }
         }
     }
